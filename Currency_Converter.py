@@ -16,7 +16,6 @@ choice = input("Enter the currency number i.e (1-10) from which you want to conv
 converted_choice = input("Enter the currency number (1-10) in which you want to convert: ")
 amount = float(input("Enter amount: "))
 
-# Mapping number to currency code
 currency_map = {
     "1": "USD",
     "2": "EUR",
@@ -34,7 +33,7 @@ base_currency = currency_map.get(choice)
 target_currency = currency_map.get(converted_choice)
 
 if base_currency is None or target_currency is None:
-    print("❌ Invalid currency selection.")
+    print("Invalid currency selection.")
 else:
     url = f"https://v6.exchangerate-api.com/v6/25c489c3a2c0893f6d6ce2d9/latest/{base_currency}"
 
@@ -46,8 +45,8 @@ else:
 
         if rate:
             result = rate * amount
-            print(f"\n✅ {amount} {base_currency} = {result:.2f} {target_currency}")
+            print(f"\n{amount} {base_currency} = {result:.2f} {target_currency}")
         else:
-            print("❌ Target currency not found in API response.")
+            print("Target currency not found in API response.")
     else:
-        print("❌ Failed to fetch data:", response.status_code)
+        print("Failed to fetch data:", response.status_code)
